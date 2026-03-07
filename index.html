@@ -1254,13 +1254,18 @@ function mdToHtml(md, repoName, branch) {
 
   // Helper: convert any GitHub URL to raw
   function toRawUrl(s) {
-    try { s = decodeURIComponent(s.trim()); } catch(e) {}
+    s = s.trim();
+    // Already a raw.githubusercontent.com URL — use as-is (don't re-encode)
+    if (s.startsWith('https://raw.githubusercontent.com')) return s;
     // github.com/.../blob/BRANCH/path  →  raw.githubusercontent.com/.../BRANCH/path
-    s = s.replace(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/,
-      'https://raw.githubusercontent.com/$1/$2/$3/$4');
-    // relative path
-    if (!s.startsWith('http')) s = rawBase + '/' + s.replace(/^\.?\//, '');
-    // encode spaces and parens
+    if (/^https?:\/\/github\.com/.test(s)) {
+      s = s.replace(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/,
+        'https://raw.githubusercontent.com/$1/$2/$3/$4');
+      return s;
+    }
+    // Relative path — decode, prefix with rawBase, then encode spaces/parens
+    try { s = decodeURIComponent(s); } catch(e) {}
+    s = rawBase + '/' + s.replace(/^\.?\//, '');
     return s.replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29');
   }
 
