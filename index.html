@@ -1255,12 +1255,18 @@ function mdToHtml(md, repoName, branch) {
   // Helper: convert any GitHub URL to raw
   function toRawUrl(s) {
     s = s.trim();
-    // Already a raw URL — use as-is
-    if (s.startsWith('https://raw.githubusercontent.com')) return s;
-    // github.com blob page → convert to raw
+    // raw.githubusercontent.com — just encode parens/spaces in the path portion
+    if (s.startsWith('https://raw.githubusercontent.com')) {
+      // Split off the base (first 5 path segments: host/user/repo/branch) then encode the file path
+      const m = s.match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)(\/?.*)$/);
+      if (m) return m[1] + m[2].replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/ /g,'%20');
+      return s;
+    }
+    // github.com blob page → convert to raw, then encode parens
     if (/^https?:\/\/github\.com\/[^/]+\/[^/]+\/blob\//.test(s)) {
-      return s.replace(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/,
+      s = s.replace(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/,
         'https://raw.githubusercontent.com/$1/$2/$3/$4');
+      return s.replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/ /g,'%20');
     }
     // Any other absolute URL (shields.io badges, etc) — pass through untouched
     if (/^https?:\/\//.test(s)) return s;
