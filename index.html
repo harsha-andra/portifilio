@@ -1251,7 +1251,25 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel()
 function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function mdToHtml(md, repoName, branch) {
   const rawBase = `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}`;
-  const ghBase  = `https://github.com/${GITHUB_USER}/${repoName}/raw/${branch}`;
+
+  // Helper: convert any GitHub URL to raw
+  function toRawUrl(s) {
+    try { s = decodeURIComponent(s.trim()); } catch(e) {}
+    // github.com/.../blob/BRANCH/path  →  raw.githubusercontent.com/.../BRANCH/path
+    s = s.replace(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/,
+      'https://raw.githubusercontent.com/$1/$2/$3/$4');
+    // relative path
+    if (!s.startsWith('http')) s = rawBase + '/' + s.replace(/^\.?\//, '');
+    // encode spaces and parens
+    return s.replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29');
+  }
+
+  // Pre-pass: handle raw HTML <img src="..."> tags in the markdown
+  md = md.replace(/<img([^>]*?)src=["']([^"']+)["']([^>]*)>/gi, (_, pre, src, post) => {
+    const s = toRawUrl(src);
+    return `<img${pre}src="${s}"${post} crossorigin="anonymous" style="max-width:100%;border-radius:4px;margin:10px 0;display:block;">`;
+  });
+
   return md
     .replace(/```[\w]*\n?([\s\S]*?)```/g, (_,c) => `<pre><code>${escHtml(c.trim())}</code></pre>`)
     .replace(/`([^`]+)`/g, (_,c) => `<code>${escHtml(c)}</code>`)
@@ -1260,20 +1278,10 @@ function mdToHtml(md, repoName, branch) {
     .replace(/^# (.+)$/gm,  '<h1>$1</h1>')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,   '<em>$1</em>')
-    // Fix images — resolve relative paths to absolute raw.githubusercontent URLs
+    // Fix images — resolve all paths including GitHub blob URLs
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
-      // Decode any %20 etc so the URL is clean, then re-encode properly
-      let cleanSrc = src.trim();
-      try { cleanSrc = decodeURIComponent(cleanSrc); } catch(e) {}
-      // Already absolute URL
-      if (cleanSrc.startsWith('http')) {
-        // Re-encode spaces/parens in the path portion only
-        const encoded = cleanSrc.replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29');
-        return `<img src="${encoded}" alt="${escHtml(alt)}" crossorigin="anonymous" style="max-width:100%;border-radius:2px;margin:12px 0;display:block;">`;
-      }
-      // Relative path — prefix with raw base, encode spaces
-      const rel = cleanSrc.replace(/^\.?\//,'').replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29');
-      return `<img src="${rawBase}/${rel}" alt="${escHtml(alt)}" crossorigin="anonymous" style="max-width:100%;border-radius:2px;margin:12px 0;display:block;">`;
+      const s = toRawUrl(src);
+      return `<img src="${s}" alt="${escHtml(alt)}" crossorigin="anonymous" style="max-width:100%;border-radius:2px;margin:12px 0;display:block;">`;
     })
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
     .replace(/^---+$/gm,'<hr>')
