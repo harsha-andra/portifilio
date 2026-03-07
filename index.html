@@ -745,7 +745,7 @@
   }
   #readme-content li { margin-bottom: 6px; }
   #readme-content a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,169,110,0.25); }
-  #readme-content img { max-width: 100%; opacity: 0.8; margin: 12px 0; }
+  #readme-content img { max-width: 100%; opacity: 1; margin: 12px 0; display: block; border-radius: 4px; height: auto; }
   #readme-content hr { border: none; border-top: 1px solid rgba(240,236,228,0.08); margin: 20px 0; }
   #readme-content blockquote {
     border-left: 2px solid var(--accent);
@@ -1262,10 +1262,18 @@ function mdToHtml(md, repoName, branch) {
     .replace(/\*(.+?)\*/g,   '<em>$1</em>')
     // Fix images — resolve relative paths to absolute raw.githubusercontent URLs
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
-      // Already absolute
-      if (src.startsWith('http')) return `<img src="${src}" alt="${alt}" style="max-width:100%;border-radius:2px;margin:12px 0;opacity:0.9;">`;
-      // Relative path — prefix with raw base
-      return `<img src="${rawBase}/${src.replace(/^\.?\//,'')}" alt="${alt}" style="max-width:100%;border-radius:2px;margin:12px 0;opacity:0.9;">`;
+      // Decode any %20 etc so the URL is clean, then re-encode properly
+      let cleanSrc = src.trim();
+      try { cleanSrc = decodeURIComponent(cleanSrc); } catch(e) {}
+      // Already absolute URL
+      if (cleanSrc.startsWith('http')) {
+        // Re-encode spaces/parens in the path portion only
+        const encoded = cleanSrc.replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29');
+        return `<img src="${encoded}" alt="${escHtml(alt)}" crossorigin="anonymous" style="max-width:100%;border-radius:2px;margin:12px 0;display:block;">`;
+      }
+      // Relative path — prefix with raw base, encode spaces
+      const rel = cleanSrc.replace(/^\.?\//,'').replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29');
+      return `<img src="${rawBase}/${rel}" alt="${escHtml(alt)}" crossorigin="anonymous" style="max-width:100%;border-radius:2px;margin:12px 0;display:block;">`;
     })
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
     .replace(/^---+$/gm,'<hr>')
@@ -1275,9 +1283,12 @@ function mdToHtml(md, repoName, branch) {
     .replace(/^\d+\. (.+)$/gm,'<li>$1</li>')
     .split(/\n{2,}/)
     .map(b => {
-      if (/^<(h[1-6]|pre|ul|ol|hr|blockquote|img)/.test(b.trim())) return b;
-      return b.trim() ? `<p>${b.trim().replace(/\n/g,' ')}</p>` : '';
-    }).join('\n');
+      const t = b.trim();
+      if (!t) return "";
+      if (/^<(h[1-6]|pre|ul|ol|hr|blockquote|img|table)/.test(t)) return t;
+      if (t.includes("<img ")) return `<div style="margin:12px 0;">${t}</div>`;
+      return `<p>${t.replace(/\n/g," ")}</p>`;
+    }).join("\n");
 }
 
 async function fetchReadme(repoName, repoUrl) {
