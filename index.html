@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Harsha Vardhan Andra — Data Scientist</title>
+<title>Harsha Andra — AI/ML Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
 <style>
@@ -228,11 +228,36 @@
     line-height: 1.3;
     color: var(--white);
     font-weight: 300;
+    position: relative;
   }
   .about-statement em {
     font-style: italic;
     color: var(--accent);
+    position: relative;
   }
+  /* animated underline on the em */
+  .about-statement em::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.6s ease;
+  }
+  #about:hover .about-statement em::after { width: 100%; }
+
+  /* glowing left border accent */
+  .about-statement::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 0;
+    width: 2px; height: 0;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    transition: height 0.8s ease 0.1s;
+  }
+  #about.visible .about-statement::before,
+  .reveal.visible .about-statement::before { height: 100%; }
+
   .about-details p {
     color: var(--cream);
     font-size: 12px;
@@ -240,6 +265,55 @@
     margin-bottom: 24px;
     opacity: 0.8;
   }
+
+  /* about stats row */
+  .about-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .about-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .about-stat-num {
+    font-family: var(--display);
+    font-size: 36px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    line-height: 1;
+    /* counter animation handled in JS */
+  }
+  .about-stat-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,236,228,0.35);
+  }
+
+  /* typewriter cursor on the "currently exploring" line */
+  .about-exploring {
+    font-size: 11px;
+    color: rgba(200,169,110,0.6);
+    margin-top: 8px;
+    line-height: 1.8;
+    border-left: 2px solid rgba(200,169,110,0.25);
+    padding-left: 12px;
+  }
+  .about-exploring .cursor-blink {
+    display: inline-block;
+    width: 1px; height: 12px;
+    background: var(--accent);
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
   .about-edu {
     margin-top: 40px;
     border-top: 1px solid var(--border);
@@ -267,9 +341,23 @@
   .skill-block {
     background: var(--black);
     padding: 36px 32px;
-    transition: background 0.3s;
+    transition: background 0.4s;
+    position: relative;
+    overflow: hidden;
   }
+  /* sweep shine on hover */
+  .skill-block::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(200,169,110,0.04), transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+  }
+  .skill-block:hover::after { left: 150%; }
   .skill-block:hover { background: rgba(200,169,110,0.04); }
+
   .skill-cat {
     font-size: 10px;
     letter-spacing: 0.25em;
@@ -284,15 +372,20 @@
   }
   .skill-tag {
     font-size: 11px;
-    padding: 4px 10px;
-    border: 1px solid var(--border);
-    color: var(--cream);
-    letter-spacing: 0.05em;
-    transition: border-color 0.3s, color 0.3s;
+    padding: 4px 12px;
+    border: 1px solid rgba(240,236,228,0.2);
+    color: var(--white);
+    letter-spacing: 0.06em;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    cursor: default;
   }
   .skill-tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    color: #ffffff;
+    border-color: rgba(240,236,228,0.7);
+    background: rgba(240,236,228,0.06);
+    box-shadow: 0 0 12px rgba(240,236,228,0.12), inset 0 0 8px rgba(240,236,228,0.04);
   }
 
   /* PROJECTS */
@@ -516,6 +609,32 @@
     left: 0;
     color: var(--accent);
     opacity: 0.5;
+  }
+
+  /* EXPERIENCE STACK TAGS */
+  .exp-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .exp-stack-tag {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid rgba(240,236,228,0.2);
+    padding: 4px 10px;
+    position: relative;
+    cursor: default;
+    transition: color 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    overflow: hidden;
+  }
+  .exp-stack-tag:hover {
+    color: #ffffff;
+    border-color: rgba(240,236,228,0.7);
+    background: rgba(240,236,228,0.06);
+    box-shadow: 0 0 10px rgba(240,236,228,0.12), inset 0 0 8px rgba(240,236,228,0.04);
   }
 
   /* CERTIFICATIONS */
@@ -809,7 +928,8 @@
   <a href="#hero" class="nav-logo">HVA<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#github">GitHub</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#github">Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -819,14 +939,14 @@
 <!-- HERO -->
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
-  <div class="hero-eyebrow">Data Scientist &amp; ML Engineer — Open to Work</div>
+  <div class="hero-eyebrow">AI/ML Engineer | GenAI · RAG · LLM Applications — Open to Work</div>
   <h1 class="hero-name">
-    HARSHA<span class="line2">VARDHAN</span>
+    HARSHA<span class="line2">ANDRA</span>
   </h1>
   <div class="hero-sub">
     <p class="hero-role">
-      <em>Building intelligent systems</em> from messy data —<br>
-      ML pipelines, statistical inference, and explainable AI
+      <em>Building intelligent systems</em> that turn messy, real-world data<br>
+      into decisions that matter — LLMs, RAG, MLOps &amp; scalable pipelines
     </p>
     <div class="hero-meta">
       <p>M.S. Computer Science</p>
@@ -846,17 +966,33 @@
   <div class="about-grid reveal">
     <div>
       <p class="about-statement">
-        Data Scientist with hands-on expertise in <em>statistical analysis</em>, machine learning, and end-to-end pipeline engineering.
+        AI/ML Engineer with 4+ years building <em>production-grade</em> LLM applications, RAG pipelines, and scalable data infrastructure — from idea to deployment.
       </p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <span class="about-stat-num" data-target="4">0</span>
+          <span class="about-stat-label">Years Experience</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-num" data-target="3">0</span>
+          <span class="about-stat-label">Companies</span>
+        </div>
+        <div class="about-stat">
+          <span class="about-stat-num" data-target="15">0</span>
+          <span class="about-stat-label">Projects Shipped</span>
+        </div>
+      </div>
     </div>
     <div class="about-details">
       <p>
-        Proficient in Python, SQL, and the core data science stack — Pandas, NumPy, scikit-learn, XGBoost, SHAP, and more. Experienced in building production-ready experimentation platforms, causal inference frameworks, and clinical risk prediction tools.
+        I design and ship intelligent systems grounded in real business outcomes. My work spans healthcare, finance, and enterprise AI — combining deep learning, NLP, and cloud-native MLOps to solve high-stakes problems.
       </p>
       <p>
-        My work spans healthcare risk prediction, financial fraud detection, customer analytics, and demand forecasting — always with a focus on rigorous methodology, explainability, and fairness.
+        Core stack: Python · LangChain · RAG · LLMs · TensorFlow · PyTorch · Apache Spark · AWS · Pinecone · Scikit-learn · Docker.
       </p>
-
+      <div class="about-exploring">
+        Currently exploring: LangGraph · RAGAS · Langfuse · LLM fine-tuning (QLoRA) · Agentic AI systems<span class="cursor-blink"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -871,74 +1007,198 @@
         <span class="skill-tag">Python</span>
         <span class="skill-tag">SQL</span>
         <span class="skill-tag">R</span>
-        <span class="skill-tag">C++</span>
+        <span class="skill-tag">Bash</span>
       </div>
     </div>
     <div class="skill-block">
-      <div class="skill-cat">ML / Data Science</div>
+      <div class="skill-cat">GenAI / LLM</div>
       <div class="skill-tags">
-        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">LangChain</span>
+        <span class="skill-tag">LangGraph</span>
+        <span class="skill-tag">RAG</span>
+        <span class="skill-tag">OpenAI</span>
+        <span class="skill-tag">Pinecone</span>
+        <span class="skill-tag">HuggingFace</span>
+        <span class="skill-tag">RAGAS</span>
+        <span class="skill-tag">Langfuse</span>
+        <span class="skill-tag">QLoRA</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-cat">ML / Deep Learning</div>
+      <div class="skill-tags">
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">Scikit-learn</span>
         <span class="skill-tag">XGBoost</span>
-        <span class="skill-tag">SHAP</span>
-        <span class="skill-tag">Pandas</span>
-        <span class="skill-tag">NumPy</span>
-        <span class="skill-tag">Prophet</span>
-        <span class="skill-tag">ARIMA</span>
-        <span class="skill-tag">Lifelines</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-cat">Statistics</div>
-      <div class="skill-tags">
-        <span class="skill-tag">A/B Testing</span>
-        <span class="skill-tag">Causal Inference</span>
-        <span class="skill-tag">Survival Analysis</span>
-        <span class="skill-tag">Bayesian Inference</span>
-        <span class="skill-tag">Hypothesis Testing</span>
-        <span class="skill-tag">Bootstrapping</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-cat">Visualization</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Plotly</span>
-        <span class="skill-tag">Streamlit</span>
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">Tableau</span>
-        <span class="skill-tag">Seaborn</span>
-      </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-cat">MLOps & Cloud</div>
-      <div class="skill-tags">
-        <span class="skill-tag">MLflow</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Kubernetes</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">GCP</span>
-        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Keras</span>
+        <span class="skill-tag">NLTK</span>
+        <span class="skill-tag">OpenCV</span>
       </div>
     </div>
     <div class="skill-block">
       <div class="skill-cat">Data Engineering</div>
       <div class="skill-tags">
         <span class="skill-tag">Apache Spark</span>
+        <span class="skill-tag">PySpark</span>
         <span class="skill-tag">Kafka</span>
         <span class="skill-tag">Airflow</span>
-        <span class="skill-tag">Databricks</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Redis</span>
+        <span class="skill-tag">Hadoop</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">SQL Server</span>
+        <span class="skill-tag">Informatica</span>
+        <span class="skill-tag">Talend</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-cat">MLOps &amp; Cloud</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">GCP</span>
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">MLflow</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-cat">Visualization &amp; BI</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Plotly</span>
+        <span class="skill-tag">Matplotlib</span>
+        <span class="skill-tag">Seaborn</span>
+        <span class="skill-tag">Streamlit</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GITHUB LIVE REPOS -->
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">03 — Experience</div>
+
+  <!-- Centurion Health -->
+  <div class="exp-item reveal">
+    <div class="exp-meta">
+      <div class="exp-company">Centurion Health</div>
+      <div class="exp-date">Jul 2024 – Present</div>
+      <div class="exp-location">USA</div>
+    </div>
+    <div>
+      <div class="exp-title">GenAI / ML Engineer</div>
+      <ul class="exp-bullets">
+        <li>Led design and deployment of an enterprise healthcare chatbot using LangChain (RAG), OpenAI, and Pinecone — ingesting PDFs, JSONs, and web sources for intelligent clinical Q&amp;A.</li>
+        <li>Built LLM-based RAG pipelines with multi-source document ingestion (JSON, PDF, web scraping) using LangChain LCEL.</li>
+        <li>Designed predictive analytics dashboards on AWS (S3/EC2) and Flask; applied XGBoost, Random Forest, and Neural Networks to forecast key healthcare business metrics.</li>
+        <li>Reduced medical costs by identifying surgical opportunity patterns via association rule mining on clinical procedure data.</li>
+        <li>Built scalable MapReduce/Spark pipelines for large-scale patient data processing on AWS; used MLLib for distributed model training.</li>
+        <li>Applied text mining and sentiment analysis using NLTK on healthcare feedback data; followed Agile/Scrum across all SDLC phases.</li>
+      </ul>
+      <div class="exp-stack">
+        <span class="exp-stack-tag">LangChain</span>
+        <span class="exp-stack-tag">RAG</span>
+        <span class="exp-stack-tag">OpenAI</span>
+        <span class="exp-stack-tag">Pinecone</span>
+        <span class="exp-stack-tag">AWS</span>
+        <span class="exp-stack-tag">TensorFlow</span>
+        <span class="exp-stack-tag">Keras</span>
+        <span class="exp-stack-tag">Spark</span>
+        <span class="exp-stack-tag">PySpark</span>
+        <span class="exp-stack-tag">NLTK</span>
+        <span class="exp-stack-tag">Flask</span>
+        <span class="exp-stack-tag">HuggingFace</span>
+        <span class="exp-stack-tag">Git</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applied Materials -->
+  <div class="exp-item reveal">
+    <div class="exp-meta">
+      <div class="exp-company">Applied Materials</div>
+      <div class="exp-date">Aug 2023 – Jul 2024</div>
+      <div class="exp-location">USA</div>
+    </div>
+    <div>
+      <div class="exp-title">Machine Learning Engineer</div>
+      <ul class="exp-bullets">
+        <li>Led a statistical modeling initiative to forecast FMCG sales across SENAP region markets using regression, clustering, and gradient boosting.</li>
+        <li>Tuned ML models (Random Forest, XGBoost, Naive Bayes, SVM) with Grid Search and K-fold cross-validation for optimal performance.</li>
+        <li>Built real-time process models using mathematical modeling integrated with Kafka and Airflow pipelines.</li>
+        <li>Developed Tableau dashboards (heatmaps, crosstabs, density charts) for stakeholder-facing business reporting.</li>
+        <li>Managed data workflows across Hadoop/HDFS, MongoDB, and SQL Server; used Informatica and Talend for ETL.</li>
+        <li>Researched Reinforcement Learning using TensorFlow and PyTorch for next-gen model experimentation.</li>
+      </ul>
+      <div class="exp-stack">
+        <span class="exp-stack-tag">Python</span>
+        <span class="exp-stack-tag">XGBoost</span>
+        <span class="exp-stack-tag">Scikit-learn</span>
+        <span class="exp-stack-tag">Kafka</span>
+        <span class="exp-stack-tag">Airflow</span>
+        <span class="exp-stack-tag">Tableau</span>
+        <span class="exp-stack-tag">Power BI</span>
+        <span class="exp-stack-tag">Spark</span>
+        <span class="exp-stack-tag">Hadoop</span>
+        <span class="exp-stack-tag">MongoDB</span>
+        <span class="exp-stack-tag">SQL Server</span>
+        <span class="exp-stack-tag">Informatica</span>
+        <span class="exp-stack-tag">Talend</span>
+        <span class="exp-stack-tag">PyTorch</span>
+        <span class="exp-stack-tag">TensorFlow</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECIL -->
+  <div class="exp-item reveal">
+    <div class="exp-meta">
+      <div class="exp-company">ECIL</div>
+      <div class="exp-date">Aug 2020 – Feb 2022</div>
+      <div class="exp-location">Hyderabad, India</div>
+    </div>
+    <div>
+      <div class="exp-title">Machine Learning Engineer</div>
+      <ul class="exp-bullets">
+        <li>Collected real-time sensor data (temperature, voltage, current loss) using ESP32 microcontrollers; processed and cleaned raw signals using Pandas, NumPy, and SciPy for noise filtering and feature extraction.</li>
+        <li>Built computer vision pipelines using OpenCV and PyTorch to detect anomalies in sensor readings, enabling early identification of equipment irregularities.</li>
+        <li>Developed an interactive web dashboard using Flask and Plotly to display live sensor metrics hosted on AWS EC2.</li>
+        <li>Deployed full application on AWS — raw data in S3, time-series in DynamoDB, compute on EC2, real-time monitoring via CloudWatch.</li>
+        <li>Initialized and maintained CI/CD pipelines using GitHub Actions to automate testing, build, and deployment workflows.</li>
+      </ul>
+      <div class="exp-stack">
+        <span class="exp-stack-tag">PyTorch</span>
+        <span class="exp-stack-tag">OpenCV</span>
+        <span class="exp-stack-tag">Flask</span>
+        <span class="exp-stack-tag">AWS S3</span>
+        <span class="exp-stack-tag">AWS EC2</span>
+        <span class="exp-stack-tag">DynamoDB</span>
+        <span class="exp-stack-tag">CloudWatch</span>
+        <span class="exp-stack-tag">GitHub Actions</span>
+        <span class="exp-stack-tag">Scikit-learn</span>
+        <span class="exp-stack-tag">Pandas</span>
+        <span class="exp-stack-tag">NumPy</span>
+        <span class="exp-stack-tag">SciPy</span>
+        <span class="exp-stack-tag">Plotly</span>
+        <span class="exp-stack-tag">ESP32</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL PROJECTS / RESEARCH -->
 <section id="github">
-  <div class="section-label">03 — GitHub — Pinned &amp; Recent</div>
+  <div class="section-label">04 — Personal Projects / Research</div>
   <div class="github-header reveal">
-    <p style="font-size:12px;color:rgba(240,236,228,0.4);max-width:460px;">Pinned repos shown first, then most recently updated. Auto-refreshes every 5 min — new pushes appear automatically.</p>
+    <div>
+      <p style="font-size:12px;color:rgba(240,236,228,0.4);max-width:540px;line-height:1.8;">Pinned repos shown first, then most recently updated. Auto-refreshes every 5 min — new pushes appear automatically.</p>
+      <p style="font-size:11px;color:rgba(200,169,110,0.55);max-width:540px;margin-top:10px;line-height:1.7;border-left:2px solid rgba(200,169,110,0.25);padding-left:12px;">
+        ⚠ I lost access to my previous GitHub account. This is my new profile — it contains my latest implementations from my research and ongoing AI/ML projects.
+      </p>
+    </div>
     <a href="https://github.com/harsha-andra" target="_blank" class="github-link">View All on GitHub ↗</a>
   </div>
   <div class="repos-grid" id="repos-container">
@@ -946,26 +1206,6 @@
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">04 — Experience</div>
-  <div class="exp-item reveal">
-    <div class="exp-meta">
-      <div class="exp-company">ECIL</div>
-      <div class="exp-date">Mar 2021 – Feb 2022</div>
-      <div class="exp-location">Hyderabad, India</div>
-    </div>
-    <div>
-      <div class="exp-title">Engineering Intern — Electronics Corporation of India Limited</div>
-      <ul class="exp-bullets">
-        <li>Developed software pipelines for real-time sensor data ingestion, validation, and storage — reduced pipeline errors by ~30%.</li>
-        <li>Designed ETL workflows processing high-frequency sensor telemetry from ECIL hardware systems.</li>
-        <li>Built EDA reports on sensor readings to identify anomalies, improving hardware monitoring observability by 40%.</li>
-        <li>Applied statistical methods to validate sensor calibration data, flagging outliers that reduced false-positive alerts by 20%.</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
 <!-- EDUCATION -->
 <section id="education">
@@ -979,12 +1219,7 @@
       </div>
       <div>
         <div class="exp-title">M.S. Computer Science — 2024</div>
-        <ul class="exp-bullets">
-          <li>Focused on machine learning, statistical modeling, and data engineering.</li>
-          <li>Built end-to-end ML projects spanning healthcare, finance, and retail domains.</li>
-          <li>Applied explainability techniques (SHAP) and fairness analysis to real-world datasets.</li>
-        </ul>
-      </div>
+        </div>
     </div>
     <div class="exp-item">
       <div class="exp-meta">
@@ -994,10 +1229,7 @@
       </div>
       <div>
         <div class="exp-title">B.Tech Computer Science — 2021</div>
-        <ul class="exp-bullets">
-          <li>Core foundation in algorithms, data structures, software engineering, and databases.</li>
-          <li>Began self-directed learning in Python, ML, and data science during final year.</li>
-        </ul>
+       
       </div>
     </div>
   </div>
@@ -1061,7 +1293,7 @@
   <div class="contact-links reveal">
     <div class="contact-link">
       <span class="contact-link-label">Email</span>
-      <a href="/cdn-cgi/l/email-protection#b4dcd5c6c7dcd59ad5dad0c6d5858585f4d3d9d5ddd89ad7dbd9"><span class="__cf_email__" data-cfemail="315950434259501f505f55435000000071565c50585d1f525e5c">[email&#160;protected]</span></a>
+      <a href="mailto:harsha.andra111@gmail.com">harsha.andra111@gmail.com</a>
     </div>
     <div class="contact-link">
       <span class="contact-link-label">GitHub</span>
@@ -1079,8 +1311,8 @@
 </section>
 
 <footer>
-  <span>© 2025 Harsha Vardhan Andra</span>
-  <span>Data Scientist · Harrison, NJ</span>
+  <span>©  Harsha Andra</span>
+  <span>AI/ML Engineer · Harrison, NJ</span>
 </footer>
 
 <!-- README PREVIEW PANEL -->
@@ -1465,6 +1697,33 @@ async function loadRepos() {
 
 loadRepos();
 setInterval(loadRepos, 5 * 60 * 1000);
+
+// ── STAT COUNTERS ─────────────────────────────────────────────────────────────
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const duration = 1200;
+  const start = performance.now();
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(ease * target) + (progress < 1 ? '' : '+');
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + '+';
+  }
+  requestAnimationFrame(step);
+}
+
+// Fire counters when about section scrolls into view
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.about-stat-num').forEach(animateCounter);
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+const aboutSection = document.getElementById('about');
+if (aboutSection) statObserver.observe(aboutSection);
 </script>
 </body>
 </html>
