@@ -34,7 +34,6 @@
     overflow-x: hidden;
   }
 
-  /* CUSTOM CURSOR */
   #cursor {
     position: fixed;
     width: 8px; height: 8px;
@@ -57,7 +56,6 @@
   }
   body:hover #cursor { opacity: 1; }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -96,7 +94,6 @@
     color: rgba(240,236,228,0.4);
   }
 
-  /* HERO */
   #hero {
     height: 100vh;
     display: flex;
@@ -108,7 +105,6 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* Animated data particle canvas */
   #hero-canvas {
     position: absolute;
     inset: 0;
@@ -161,12 +157,8 @@
     letter-spacing: 0.1em;
   }
   .hero-meta p { margin-bottom: 4px; }
-  .hero-meta a {
-    color: var(--accent);
-    text-decoration: none;
-  }
+  .hero-meta a { color: var(--accent); text-decoration: none; }
 
-  /* SCROLL INDICATOR */
   .scroll-hint {
     position: absolute;
     bottom: 60px; right: 48px;
@@ -191,7 +183,6 @@
     animation: scrollPulse 2s ease infinite;
   }
 
-  /* SECTIONS */
   section {
     padding: 120px 48px;
     border-bottom: 1px solid var(--border);
@@ -215,7 +206,6 @@
     max-width: 200px;
   }
 
-  /* ABOUT */
   #about .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -235,7 +225,6 @@
     color: var(--accent);
     position: relative;
   }
-  /* animated underline on the em */
   .about-statement em::after {
     content: '';
     position: absolute;
@@ -245,8 +234,6 @@
     transition: width 0.6s ease;
   }
   #about:hover .about-statement em::after { width: 100%; }
-
-  /* glowing left border accent */
   .about-statement::before {
     content: '';
     position: absolute;
@@ -266,7 +253,6 @@
     opacity: 0.8;
   }
 
-  /* about stats row */
   .about-stats {
     display: flex;
     gap: 32px;
@@ -275,18 +261,13 @@
     border-top: 1px solid var(--border);
     flex-wrap: wrap;
   }
-  .about-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  .about-stat { display: flex; flex-direction: column; gap: 4px; }
   .about-stat-num {
     font-family: var(--display);
     font-size: 36px;
     letter-spacing: 0.04em;
     color: var(--accent);
     line-height: 1;
-    /* counter animation handled in JS */
   }
   .about-stat-label {
     font-size: 10px;
@@ -295,7 +276,6 @@
     color: rgba(240,236,228,0.35);
   }
 
-  /* typewriter cursor on the "currently exploring" line */
   .about-exploring {
     font-size: 11px;
     color: rgba(200,169,110,0.6);
@@ -314,11 +294,7 @@
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-  .about-edu {
-    margin-top: 40px;
-    border-top: 1px solid var(--border);
-    padding-top: 32px;
-  }
+  .about-edu { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 32px; }
   .edu-item {
     display: flex;
     justify-content: space-between;
@@ -330,7 +306,6 @@
   .edu-item .degree { color: rgba(240,236,228,0.5); font-size: 11px; }
   .edu-item .year { color: var(--accent); font-size: 11px; }
 
-  /* SKILLS */
   #skills .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -345,7 +320,6 @@
     position: relative;
     overflow: hidden;
   }
-  /* sweep shine on hover */
   .skill-block::after {
     content: '';
     position: absolute;
@@ -357,7 +331,6 @@
   }
   .skill-block:hover::after { left: 150%; }
   .skill-block:hover { background: rgba(200,169,110,0.04); }
-
   .skill-cat {
     font-size: 10px;
     letter-spacing: 0.25em;
@@ -365,11 +338,7 @@
     color: var(--accent);
     margin-bottom: 16px;
   }
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .skill-tag {
     font-size: 11px;
     padding: 4px 12px;
@@ -388,11 +357,7 @@
     box-shadow: 0 0 12px rgba(240,236,228,0.12), inset 0 0 8px rgba(240,236,228,0.04);
   }
 
-  /* PROJECTS */
-  #projects .project-list {
-    display: flex;
-    flex-direction: column;
-  }
+  #projects .project-list { display: flex; flex-direction: column; }
   .project-item {
     display: grid;
     grid-template-columns: 60px 1fr auto;
@@ -407,23 +372,13 @@
   .project-item::before {
     content: '';
     position: absolute;
-    left: -48px;
-    top: 0; bottom: 0;
+    left: -48px; top: 0; bottom: 0;
     width: 0;
     background: rgba(200,169,110,0.04);
     transition: width 0.4s ease;
   }
-  .project-item:hover::before {
-    width: calc(100% + 96px);
-  }
-  .project-num {
-    font-size: 11px;
-    color: var(--accent);
-    opacity: 0.6;
-    padding-top: 4px;
-    letter-spacing: 0.1em;
-  }
-  .project-content {}
+  .project-item:hover::before { width: calc(100% + 96px); }
+  .project-num { font-size: 11px; color: var(--accent); opacity: 0.6; padding-top: 4px; letter-spacing: 0.1em; }
   .project-title {
     font-family: var(--display);
     font-size: clamp(24px, 3.5vw, 42px);
@@ -434,58 +389,16 @@
     transition: color 0.3s;
   }
   .project-item:hover .project-title { color: var(--accent); }
-  .project-desc {
-    font-size: 12px;
-    color: rgba(240,236,228,0.5);
-    max-width: 560px;
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-  .project-stack {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .project-stack span {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--accent2);
-    text-transform: uppercase;
-  }
-  .project-stat {
-    text-align: right;
-    padding-top: 4px;
-    font-size: 11px;
-    color: rgba(240,236,228,0.35);
-    white-space: nowrap;
-  }
-  .project-stat strong {
-    display: block;
-    font-family: var(--display);
-    font-size: 28px;
-    color: var(--white);
-    letter-spacing: 0.04em;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
+  .project-desc { font-size: 12px; color: rgba(240,236,228,0.5); max-width: 560px; line-height: 1.7; margin-bottom: 16px; }
+  .project-stack { display: flex; gap: 8px; flex-wrap: wrap; }
+  .project-stack span { font-size: 10px; letter-spacing: 0.15em; color: var(--accent2); text-transform: uppercase; }
+  .project-stat { text-align: right; padding-top: 4px; font-size: 11px; color: rgba(240,236,228,0.35); white-space: nowrap; }
+  .project-stat strong { display: block; font-family: var(--display); font-size: 28px; color: var(--white); letter-spacing: 0.04em; line-height: 1; margin-bottom: 4px; }
 
-  /* GITHUB REPOS */
-  #github {}
-  .github-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 48px;
-  }
+  .github-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
   .github-link {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    text-decoration: none;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(200,169,110,0.3);
-    padding-bottom: 2px;
-    transition: border-color 0.3s;
+    font-size: 11px; letter-spacing: 0.15em; color: var(--accent); text-decoration: none;
+    text-transform: uppercase; border-bottom: 1px solid rgba(200,169,110,0.3); padding-bottom: 2px; transition: border-color 0.3s;
   }
   .github-link:hover { border-color: var(--accent); }
   .repos-grid {
@@ -503,61 +416,18 @@
     flex-direction: column;
     gap: 12px;
     text-decoration: none;
+    cursor: none;
   }
   .repo-card:hover { background: rgba(122,158,142,0.05); }
-  .repo-name {
-    font-family: var(--display);
-    font-size: 20px;
-    letter-spacing: 0.06em;
-    color: var(--white);
-    transition: color 0.3s;
-  }
+  .repo-name { font-family: var(--display); font-size: 20px; letter-spacing: 0.06em; color: var(--white); transition: color 0.3s; }
   .repo-card:hover .repo-name { color: var(--accent2); }
-  .repo-desc {
-    font-size: 11px;
-    color: rgba(240,236,228,0.45);
-    line-height: 1.7;
-    flex: 1;
-  }
-  .repo-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  .repo-lang {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent2);
-  }
-  .repo-stars {
-    font-size: 10px;
-    color: rgba(240,236,228,0.3);
-  }
-  .repo-updated {
-    font-size: 10px;
-    color: rgba(240,236,228,0.25);
-  }
-  .repos-loading {
-    grid-column: 1/-1;
-    padding: 60px;
-    text-align: center;
-    color: rgba(240,236,228,0.3);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-  .repos-error {
-    grid-column: 1/-1;
-    padding: 40px;
-    text-align: center;
-    color: rgba(240,236,228,0.25);
-    font-size: 11px;
-  }
+  .repo-desc { font-size: 11px; color: rgba(240,236,228,0.45); line-height: 1.7; flex: 1; }
+  .repo-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
+  .repo-lang { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2); }
+  .repo-stars { font-size: 10px; color: rgba(240,236,228,0.3); }
+  .repo-updated { font-size: 10px; color: rgba(240,236,228,0.25); }
+  .repos-loading { grid-column: 1/-1; padding: 60px; text-align: center; color: rgba(240,236,228,0.3); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
 
-  /* EXPERIENCE */
   #experience .exp-item {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -565,79 +435,24 @@
     padding: 48px 0;
     border-bottom: 1px solid var(--border);
   }
-  .exp-meta {}
-  .exp-company {
-    font-family: var(--display);
-    font-size: 22px;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-  .exp-date {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: rgba(240,236,228,0.35);
-    text-transform: uppercase;
-  }
-  .exp-location {
-    font-size: 10px;
-    color: rgba(240,236,228,0.3);
-    margin-top: 4px;
-  }
-  .exp-title {
-    font-size: 14px;
-    color: var(--white);
-    margin-bottom: 16px;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 18px;
-  }
-  .exp-bullets {
-    list-style: none;
-  }
-  .exp-bullets li {
-    font-size: 12px;
-    color: rgba(240,236,228,0.55);
-    line-height: 1.8;
-    padding-left: 16px;
-    position: relative;
-    margin-bottom: 8px;
-  }
-  .exp-bullets li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    opacity: 0.5;
-  }
-
-  /* EXPERIENCE STACK TAGS */
-  .exp-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 18px;
-  }
+  .exp-company { font-family: var(--display); font-size: 22px; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 4px; }
+  .exp-date { font-size: 10px; letter-spacing: 0.15em; color: rgba(240,236,228,0.35); text-transform: uppercase; }
+  .exp-location { font-size: 10px; color: rgba(240,236,228,0.3); margin-top: 4px; }
+  .exp-title { color: var(--white); margin-bottom: 16px; font-family: var(--serif); font-style: italic; font-size: 18px; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li { font-size: 12px; color: rgba(240,236,228,0.55); line-height: 1.8; padding-left: 16px; position: relative; margin-bottom: 8px; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--accent); opacity: 0.5; }
+  .exp-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
   .exp-stack-tag {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--white);
-    border: 1px solid rgba(240,236,228,0.2);
-    padding: 4px 10px;
-    position: relative;
-    cursor: default;
-    transition: color 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
-    overflow: hidden;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--white);
+    border: 1px solid rgba(240,236,228,0.2); padding: 4px 10px; cursor: default;
+    transition: color 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s; overflow: hidden;
   }
   .exp-stack-tag:hover {
-    color: #ffffff;
-    border-color: rgba(240,236,228,0.7);
-    background: rgba(240,236,228,0.06);
+    color: #ffffff; border-color: rgba(240,236,228,0.7); background: rgba(240,236,228,0.06);
     box-shadow: 0 0 10px rgba(240,236,228,0.12), inset 0 0 8px rgba(240,236,228,0.04);
   }
 
-  /* CERTIFICATIONS */
   #certifications .cert-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -645,285 +460,100 @@
     background: var(--border);
     border: 1px solid var(--border);
   }
-  .cert-item {
-    background: var(--black);
-    padding: 28px 24px;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    transition: background 0.3s;
-  }
+  .cert-item { background: var(--black); padding: 28px 24px; display: flex; align-items: flex-start; gap: 16px; transition: background 0.3s; }
   .cert-item:hover { background: rgba(200,169,110,0.03); }
-  .cert-icon {
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .cert-name {
-    font-size: 12px;
-    color: var(--white);
-    line-height: 1.5;
-    margin-bottom: 4px;
-  }
-  .cert-issuer {
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
+  .cert-icon { width: 32px; height: 32px; border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+  .cert-name { font-size: 12px; color: var(--white); line-height: 1.5; margin-bottom: 4px; }
+  .cert-issuer { font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
 
-  /* CONTACT */
-  #contact {
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .contact-big {
-    font-family: var(--display);
-    font-size: clamp(48px, 9vw, 130px);
-    letter-spacing: 0.03em;
-    line-height: 0.9;
-    color: var(--white);
-    margin-bottom: 48px;
-  }
-  .contact-big span {
-    display: block;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(240,236,228,0.2);
-  }
-  .contact-links {
-    display: flex;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-  .contact-link {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .contact-link-label {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(240,236,228,0.3);
-  }
-  .contact-link a {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 13px;
-    border-bottom: 1px solid rgba(240,236,228,0.15);
-    padding-bottom: 2px;
-    transition: color 0.3s, border-color 0.3s;
-  }
-  .contact-link a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
+  #contact { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; }
+  .contact-big { font-family: var(--display); font-size: clamp(48px, 9vw, 130px); letter-spacing: 0.03em; line-height: 0.9; color: var(--white); margin-bottom: 48px; }
+  .contact-big span { display: block; color: transparent; -webkit-text-stroke: 1px rgba(240,236,228,0.2); }
+  .contact-links { display: flex; gap: 48px; flex-wrap: wrap; }
+  .contact-link { display: flex; flex-direction: column; gap: 4px; }
+  .contact-link-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(240,236,228,0.3); }
+  .contact-link a { color: var(--cream); text-decoration: none; font-size: 13px; border-bottom: 1px solid rgba(240,236,228,0.15); padding-bottom: 2px; transition: color 0.3s, border-color 0.3s; }
+  .contact-link a:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* FOOTER */
-  footer {
-    padding: 24px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 10px;
-    color: rgba(240,236,228,0.2);
-    letter-spacing: 0.1em;
-  }
+  footer { padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: rgba(240,236,228,0.2); letter-spacing: 0.1em; }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50%       { opacity: 1; transform: scaleY(1.1); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.1); } }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* Noise overlay */
   body::after {
     content: '';
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.025;
-    pointer-events: none;
-    z-index: 9997;
+    opacity: 0.025; pointer-events: none; z-index: 9997;
   }
 
-  /* README PREVIEW PANEL */
   #readme-panel {
-    position: fixed;
-    top: 0; right: 0;
-    width: min(520px, 92vw);
-    height: 100vh;
+    position: fixed; top: 0; right: 0;
+    width: min(520px, 92vw); height: 100vh;
     background: #0f0f0f;
     border-left: 1px solid rgba(240,236,228,0.1);
-    z-index: 500;
-    display: flex;
-    flex-direction: column;
+    z-index: 500; display: flex; flex-direction: column;
     transform: translateX(100%);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: hidden;
   }
   #readme-panel.open { transform: translateX(0); }
-  #readme-header {
-    padding: 24px 28px 20px;
-    border-bottom: 1px solid rgba(240,236,228,0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-shrink: 0;
-  }
-  #readme-repo-name {
-    font-family: var(--display);
-    font-size: 22px;
-    letter-spacing: 0.06em;
-    color: var(--white);
-    margin-bottom: 4px;
-  }
-  #readme-repo-meta {
-    font-size: 10px;
-    color: rgba(240,236,228,0.35);
-    letter-spacing: 0.1em;
-  }
-  #readme-close {
-    background: none;
-    border: 1px solid rgba(240,236,228,0.15);
-    color: rgba(240,236,228,0.5);
-    width: 32px; height: 32px;
-    cursor: none;
-    font-size: 16px;
-    display: flex; align-items: center; justify-content: center;
-    transition: border-color 0.2s, color 0.2s;
-    flex-shrink: 0;
-  }
+  #readme-header { padding: 24px 28px 20px; border-bottom: 1px solid rgba(240,236,228,0.08); display: flex; justify-content: space-between; align-items: flex-start; flex-shrink: 0; }
+  #readme-repo-name { font-family: var(--display); font-size: 22px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
+  #readme-repo-meta { font-size: 10px; color: rgba(240,236,228,0.35); letter-spacing: 0.1em; }
+  #readme-close { background: none; border: 1px solid rgba(240,236,228,0.15); color: rgba(240,236,228,0.5); width: 32px; height: 32px; cursor: none; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, color 0.2s; flex-shrink: 0; }
   #readme-close:hover { border-color: var(--accent); color: var(--accent); }
-  #readme-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 28px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(200,169,110,0.2) transparent;
-  }
+  #readme-body { flex: 1; overflow-y: auto; padding: 28px; scrollbar-width: thin; scrollbar-color: rgba(200,169,110,0.2) transparent; }
   #readme-body::-webkit-scrollbar { width: 4px; }
   #readme-body::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.2); border-radius: 2px; }
-  #readme-content {
-    font-size: 12px;
-    line-height: 1.85;
-    color: rgba(240,236,228,0.65);
-  }
-  #readme-content h1, #readme-content h2, #readme-content h3 {
-    font-family: var(--display);
-    letter-spacing: 0.06em;
-    color: var(--white);
-    margin: 24px 0 10px;
-    line-height: 1.1;
-  }
+  #readme-content { font-size: 12px; line-height: 1.85; color: rgba(240,236,228,0.65); }
+  #readme-content h1, #readme-content h2, #readme-content h3 { font-family: var(--display); letter-spacing: 0.06em; color: var(--white); margin: 24px 0 10px; line-height: 1.1; }
   #readme-content h1 { font-size: 28px; margin-top: 0; }
   #readme-content h2 { font-size: 20px; }
   #readme-content h3 { font-size: 16px; }
   #readme-content p { margin-bottom: 14px; }
-  #readme-content code {
-    font-family: var(--mono);
-    background: rgba(240,236,228,0.06);
-    border: 1px solid rgba(240,236,228,0.08);
-    padding: 1px 6px;
-    font-size: 11px;
-    color: var(--accent2);
-  }
-  #readme-content pre {
-    background: rgba(240,236,228,0.04);
-    border: 1px solid rgba(240,236,228,0.08);
-    padding: 16px;
-    overflow-x: auto;
-    margin-bottom: 16px;
-  }
+  #readme-content code { font-family: var(--mono); background: rgba(240,236,228,0.06); border: 1px solid rgba(240,236,228,0.08); padding: 1px 6px; font-size: 11px; color: var(--accent2); }
+  #readme-content pre { background: rgba(240,236,228,0.04); border: 1px solid rgba(240,236,228,0.08); padding: 16px; overflow-x: auto; margin-bottom: 16px; }
   #readme-content pre code { background: none; border: none; padding: 0; }
-  #readme-content ul, #readme-content ol {
-    padding-left: 20px;
-    margin-bottom: 14px;
-  }
+  #readme-content ul, #readme-content ol { padding-left: 20px; margin-bottom: 14px; }
   #readme-content li { margin-bottom: 6px; }
   #readme-content a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,169,110,0.25); }
   #readme-content img { max-width: 100%; opacity: 1; margin: 12px 0; display: block; border-radius: 4px; height: auto; }
   #readme-content hr { border: none; border-top: 1px solid rgba(240,236,228,0.08); margin: 20px 0; }
-  #readme-content blockquote {
-    border-left: 2px solid var(--accent);
-    padding-left: 14px;
-    color: rgba(240,236,228,0.4);
-    font-style: italic;
-  }
-  #readme-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    color: rgba(240,236,228,0.25);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-  #readme-footer {
-    padding: 16px 28px;
-    border-top: 1px solid rgba(240,236,228,0.08);
-    flex-shrink: 0;
-  }
-  #readme-github-link {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(200,169,110,0.3);
-    padding-bottom: 2px;
-  }
-  #readme-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(8,8,8,0.6);
-    z-index: 499;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-  }
+  #readme-content blockquote { border-left: 2px solid var(--accent); padding-left: 14px; color: rgba(240,236,228,0.4); font-style: italic; }
+  #readme-loading { display: flex; align-items: center; justify-content: center; height: 200px; color: rgba(240,236,228,0.25); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+  #readme-footer { padding: 16px 28px; border-top: 1px solid rgba(240,236,228,0.08); flex-shrink: 0; }
+  #readme-github-link { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,169,110,0.3); padding-bottom: 2px; }
+  #readme-overlay { position: fixed; inset: 0; background: rgba(8,8,8,0.6); z-index: 499; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
   #readme-overlay.open { opacity: 1; pointer-events: all; }
 
-@media (max-width: 768px) {
-  nav { padding: 20px 24px; }
-  .nav-links { display: none; }
-  #hero, section { padding-left: 24px; padding-right: 24px; }
-  #about .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .exp-item { grid-template-columns: 1fr; gap: 16px; }
-  #readme-panel { width: 100vw; }
-}
+  /* Education styles */
+  .edu-row { padding: 28px 0; border-bottom: 1px solid var(--border); }
+  .edu-row-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .edu-name { font-family: var(--display); font-size: 22px; letter-spacing: 0.06em; color: var(--white); }
+  .edu-meta-inline { font-size: 11px; color: rgba(240,236,228,0.35); display: flex; gap: 8px; }
+  .edu-sep { color: var(--accent); }
+  .edu-gpa { color: var(--accent); }
+  .edu-degree { font-family: var(--serif); font-style: italic; font-size: 16px; color: rgba(240,236,228,0.55); }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    #hero, section { padding-left: 24px; padding-right: 24px; }
+    #about .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .exp-item { grid-template-columns: 1fr; gap: 16px; }
+    #readme-panel { width: 100vw; }
+  }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">HVA<span>.</span></a>
   <ul class="nav-links">
@@ -936,7 +566,6 @@
   <div class="nav-time" id="clock">Harrison, NJ</div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-eyebrow">AI/ML Engineer | GenAI · RAG · LLM Applications — Open to Work</div>
@@ -960,7 +589,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-label">01 — About</div>
   <div class="about-grid reveal">
@@ -984,12 +612,8 @@
       </div>
     </div>
     <div class="about-details">
-      <p>
-        I design and ship intelligent systems grounded in real business outcomes. My work spans healthcare, finance, and enterprise AI — combining deep learning, NLP, and cloud-native MLOps to solve high-stakes problems.
-      </p>
-      <p>
-        Core stack: Python · LangChain · RAG · LLMs · TensorFlow · PyTorch · Apache Spark · AWS · Pinecone · Scikit-learn · Docker.
-      </p>
+      <p>I design and ship intelligent systems grounded in real business outcomes. My work spans healthcare, finance, and enterprise AI — combining deep learning, NLP, and cloud-native MLOps to solve high-stakes problems.</p>
+      <p>Core stack: Python · LangChain · RAG · LLMs · TensorFlow · PyTorch · Apache Spark · AWS · Pinecone · Scikit-learn · Docker.</p>
       <div class="about-exploring">
         Currently exploring: LangGraph · RAGAS · Langfuse · LLM fine-tuning (QLoRA) · Agentic AI systems<span class="cursor-blink"></span>
       </div>
@@ -997,91 +621,50 @@
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="section-label">02 — Skills</div>
   <div class="skills-grid reveal">
     <div class="skill-block">
       <div class="skill-cat">Programming</div>
       <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">Bash</span>
+        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">R</span><span class="skill-tag">Bash</span>
       </div>
     </div>
     <div class="skill-block">
       <div class="skill-cat">GenAI / LLM</div>
       <div class="skill-tags">
-        <span class="skill-tag">LangChain</span>
-        <span class="skill-tag">LangGraph</span>
-        <span class="skill-tag">RAG</span>
-        <span class="skill-tag">OpenAI</span>
-        <span class="skill-tag">Pinecone</span>
-        <span class="skill-tag">HuggingFace</span>
-        <span class="skill-tag">RAGAS</span>
-        <span class="skill-tag">Langfuse</span>
-        <span class="skill-tag">QLoRA</span>
+        <span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span><span class="skill-tag">RAG</span><span class="skill-tag">OpenAI</span><span class="skill-tag">Pinecone</span><span class="skill-tag">HuggingFace</span><span class="skill-tag">RAGAS</span><span class="skill-tag">Langfuse</span><span class="skill-tag">QLoRA</span>
       </div>
     </div>
     <div class="skill-block">
       <div class="skill-cat">ML / Deep Learning</div>
       <div class="skill-tags">
-        <span class="skill-tag">TensorFlow</span>
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">Scikit-learn</span>
-        <span class="skill-tag">XGBoost</span>
-        <span class="skill-tag">Keras</span>
-        <span class="skill-tag">NLTK</span>
-        <span class="skill-tag">OpenCV</span>
+        <span class="skill-tag">TensorFlow</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">XGBoost</span><span class="skill-tag">Keras</span><span class="skill-tag">NLTK</span><span class="skill-tag">OpenCV</span>
       </div>
     </div>
     <div class="skill-block">
       <div class="skill-cat">Data Engineering</div>
       <div class="skill-tags">
-        <span class="skill-tag">Apache Spark</span>
-        <span class="skill-tag">PySpark</span>
-        <span class="skill-tag">Kafka</span>
-        <span class="skill-tag">Airflow</span>
-        <span class="skill-tag">Hadoop</span>
-        <span class="skill-tag">MongoDB</span>
-        <span class="skill-tag">SQL Server</span>
-        <span class="skill-tag">Informatica</span>
-        <span class="skill-tag">Talend</span>
+        <span class="skill-tag">Apache Spark</span><span class="skill-tag">PySpark</span><span class="skill-tag">Kafka</span><span class="skill-tag">Airflow</span><span class="skill-tag">Hadoop</span><span class="skill-tag">MongoDB</span><span class="skill-tag">SQL Server</span><span class="skill-tag">Informatica</span><span class="skill-tag">Talend</span>
       </div>
     </div>
     <div class="skill-block">
       <div class="skill-cat">MLOps &amp; Cloud</div>
       <div class="skill-tags">
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Azure</span>
-        <span class="skill-tag">GCP</span>
-        <span class="skill-tag">Flask</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">GitHub Actions</span>
-        <span class="skill-tag">MLflow</span>
+        <span class="skill-tag">Docker</span><span class="skill-tag">AWS</span><span class="skill-tag">Azure</span><span class="skill-tag">GCP</span><span class="skill-tag">Flask</span><span class="skill-tag">FastAPI</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">MLflow</span>
       </div>
     </div>
     <div class="skill-block">
       <div class="skill-cat">Visualization &amp; BI</div>
       <div class="skill-tags">
-        <span class="skill-tag">Tableau</span>
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">Plotly</span>
-        <span class="skill-tag">Matplotlib</span>
-        <span class="skill-tag">Seaborn</span>
-        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">Tableau</span><span class="skill-tag">Power BI</span><span class="skill-tag">Plotly</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span><span class="skill-tag">Streamlit</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-label">03 — Experience</div>
-
-  <!-- Centurion Health -->
   <div class="exp-item reveal">
     <div class="exp-meta">
       <div class="exp-company">Centurion Health</div>
@@ -1099,24 +682,10 @@
         <li>Applied text mining and sentiment analysis using NLTK on healthcare feedback data; followed Agile/Scrum across all SDLC phases.</li>
       </ul>
       <div class="exp-stack">
-        <span class="exp-stack-tag">LangChain</span>
-        <span class="exp-stack-tag">RAG</span>
-        <span class="exp-stack-tag">OpenAI</span>
-        <span class="exp-stack-tag">Pinecone</span>
-        <span class="exp-stack-tag">AWS</span>
-        <span class="exp-stack-tag">TensorFlow</span>
-        <span class="exp-stack-tag">Keras</span>
-        <span class="exp-stack-tag">Spark</span>
-        <span class="exp-stack-tag">PySpark</span>
-        <span class="exp-stack-tag">NLTK</span>
-        <span class="exp-stack-tag">Flask</span>
-        <span class="exp-stack-tag">HuggingFace</span>
-        <span class="exp-stack-tag">Git</span>
+        <span class="exp-stack-tag">LangChain</span><span class="exp-stack-tag">RAG</span><span class="exp-stack-tag">OpenAI</span><span class="exp-stack-tag">Pinecone</span><span class="exp-stack-tag">AWS</span><span class="exp-stack-tag">TensorFlow</span><span class="exp-stack-tag">Keras</span><span class="exp-stack-tag">Spark</span><span class="exp-stack-tag">PySpark</span><span class="exp-stack-tag">NLTK</span><span class="exp-stack-tag">Flask</span><span class="exp-stack-tag">HuggingFace</span><span class="exp-stack-tag">Git</span>
       </div>
     </div>
   </div>
-
-  <!-- Applied Materials -->
   <div class="exp-item reveal">
     <div class="exp-meta">
       <div class="exp-company">Applied Materials</div>
@@ -1134,26 +703,10 @@
         <li>Researched Reinforcement Learning using TensorFlow and PyTorch for next-gen model experimentation.</li>
       </ul>
       <div class="exp-stack">
-        <span class="exp-stack-tag">Python</span>
-        <span class="exp-stack-tag">XGBoost</span>
-        <span class="exp-stack-tag">Scikit-learn</span>
-        <span class="exp-stack-tag">Kafka</span>
-        <span class="exp-stack-tag">Airflow</span>
-        <span class="exp-stack-tag">Tableau</span>
-        <span class="exp-stack-tag">Power BI</span>
-        <span class="exp-stack-tag">Spark</span>
-        <span class="exp-stack-tag">Hadoop</span>
-        <span class="exp-stack-tag">MongoDB</span>
-        <span class="exp-stack-tag">SQL Server</span>
-        <span class="exp-stack-tag">Informatica</span>
-        <span class="exp-stack-tag">Talend</span>
-        <span class="exp-stack-tag">PyTorch</span>
-        <span class="exp-stack-tag">TensorFlow</span>
+        <span class="exp-stack-tag">Python</span><span class="exp-stack-tag">XGBoost</span><span class="exp-stack-tag">Scikit-learn</span><span class="exp-stack-tag">Kafka</span><span class="exp-stack-tag">Airflow</span><span class="exp-stack-tag">Tableau</span><span class="exp-stack-tag">Power BI</span><span class="exp-stack-tag">Spark</span><span class="exp-stack-tag">Hadoop</span><span class="exp-stack-tag">MongoDB</span><span class="exp-stack-tag">SQL Server</span><span class="exp-stack-tag">Informatica</span><span class="exp-stack-tag">Talend</span><span class="exp-stack-tag">PyTorch</span><span class="exp-stack-tag">TensorFlow</span>
       </div>
     </div>
   </div>
-
-  <!-- ECIL -->
   <div class="exp-item reveal">
     <div class="exp-meta">
       <div class="exp-company">ECIL</div>
@@ -1170,26 +723,12 @@
         <li>Initialized and maintained CI/CD pipelines using GitHub Actions to automate testing, build, and deployment workflows.</li>
       </ul>
       <div class="exp-stack">
-        <span class="exp-stack-tag">PyTorch</span>
-        <span class="exp-stack-tag">OpenCV</span>
-        <span class="exp-stack-tag">Flask</span>
-        <span class="exp-stack-tag">AWS S3</span>
-        <span class="exp-stack-tag">AWS EC2</span>
-        <span class="exp-stack-tag">DynamoDB</span>
-        <span class="exp-stack-tag">CloudWatch</span>
-        <span class="exp-stack-tag">GitHub Actions</span>
-        <span class="exp-stack-tag">Scikit-learn</span>
-        <span class="exp-stack-tag">Pandas</span>
-        <span class="exp-stack-tag">NumPy</span>
-        <span class="exp-stack-tag">SciPy</span>
-        <span class="exp-stack-tag">Plotly</span>
-        <span class="exp-stack-tag">ESP32</span>
+        <span class="exp-stack-tag">PyTorch</span><span class="exp-stack-tag">OpenCV</span><span class="exp-stack-tag">Flask</span><span class="exp-stack-tag">AWS S3</span><span class="exp-stack-tag">AWS EC2</span><span class="exp-stack-tag">DynamoDB</span><span class="exp-stack-tag">CloudWatch</span><span class="exp-stack-tag">GitHub Actions</span><span class="exp-stack-tag">Scikit-learn</span><span class="exp-stack-tag">Pandas</span><span class="exp-stack-tag">NumPy</span><span class="exp-stack-tag">SciPy</span><span class="exp-stack-tag">Plotly</span><span class="exp-stack-tag">ESP32</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PERSONAL PROJECTS / RESEARCH -->
 <section id="github">
   <div class="section-label">04 — Personal Projects / Research</div>
   <div class="github-header reveal">
@@ -1206,12 +745,9 @@
   </div>
 </section>
 
-
-<!-- EDUCATION -->
 <section id="education">
   <div class="section-label">05 — Education</div>
   <div class="reveal">
- 
     <div class="edu-row">
       <div class="edu-row-top">
         <span class="edu-name">Pace University</span>
@@ -1219,7 +755,6 @@
       </div>
       <div class="edu-degree">M.S. Computer Science</div>
     </div>
- 
     <div class="edu-row">
       <div class="edu-row-top">
         <span class="edu-name">GMR Institute of Technology</span>
@@ -1227,91 +762,37 @@
       </div>
       <div class="edu-degree">B.Tech Computer Science</div>
     </div>
- 
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="section-label">06 — Certifications</div>
   <div class="cert-list reveal">
-    <div class="cert-item">
-      <div class="cert-icon">◈</div>
-      <div>
-        <div class="cert-name">Deep Learning Specialization</div>
-        <div class="cert-issuer">DeepLearning.AI — Coursera</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">◈</div>
-      <div>
-        <div class="cert-name">Fine-Tuning Large Language Models</div>
-        <div class="cert-issuer">DeepLearning.AI — Coursera</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">◈</div>
-      <div>
-        <div class="cert-name">TensorFlow Developer Certificate</div>
-        <div class="cert-issuer">Google</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">◈</div>
-      <div>
-        <div class="cert-name">AWS Machine Learning Foundations</div>
-        <div class="cert-issuer">AWS Academy</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">◈</div>
-      <div>
-        <div class="cert-name">Google Cloud ML Foundations</div>
-        <div class="cert-issuer">Google Cloud</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">◈</div>
-      <div>
-        <div class="cert-name">Docker &amp; Kubernetes for ML</div>
-        <div class="cert-issuer">Udemy</div>
-      </div>
-    </div>
+    <div class="cert-item"><div class="cert-icon">◈</div><div><div class="cert-name">Deep Learning Specialization</div><div class="cert-issuer">DeepLearning.AI — Coursera</div></div></div>
+    <div class="cert-item"><div class="cert-icon">◈</div><div><div class="cert-name">Fine-Tuning Large Language Models</div><div class="cert-issuer">DeepLearning.AI — Coursera</div></div></div>
+    <div class="cert-item"><div class="cert-icon">◈</div><div><div class="cert-name">TensorFlow Developer Certificate</div><div class="cert-issuer">Google</div></div></div>
+    <div class="cert-item"><div class="cert-icon">◈</div><div><div class="cert-name">AWS Machine Learning Foundations</div><div class="cert-issuer">AWS Academy</div></div></div>
+    <div class="cert-item"><div class="cert-icon">◈</div><div><div class="cert-name">Google Cloud ML Foundations</div><div class="cert-issuer">Google Cloud</div></div></div>
+    <div class="cert-item"><div class="cert-icon">◈</div><div><div class="cert-name">Docker &amp; Kubernetes for ML</div><div class="cert-issuer">Udemy</div></div></div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-label">07 — Contact</div>
-  <div class="contact-big reveal">
-    LET'S<span>CONNECT</span>
-  </div>
+  <div class="contact-big reveal">LET'S<span>CONNECT</span></div>
   <div class="contact-links reveal">
-    <div class="contact-link">
-      <span class="contact-link-label">Email</span>
-      <a href="mailto:harsha.andra111@gmail.com">harsha.andra111@gmail.com</a>
-    </div>
-    <div class="contact-link">
-      <span class="contact-link-label">GitHub</span>
-      <a href="https://github.com/harsha-andra" target="_blank">github.com/harsha-andra</a>
-    </div>
-    <div class="contact-link">
-      <span class="contact-link-label">Phone</span>
-      <a href="tel:8622722654">(862) 272-2654</a>
-    </div>
-    <div class="contact-link">
-      <span class="contact-link-label">Location</span>
-      <a href="#">Harrison, NJ, USA</a>
-    </div>
+    <div class="contact-link"><span class="contact-link-label">Email</span><a href="mailto:harsha.andra111@gmail.com">harsha.andra111@gmail.com</a></div>
+    <div class="contact-link"><span class="contact-link-label">GitHub</span><a href="https://github.com/harsha-andra" target="_blank">github.com/harsha-andra</a></div>
+    <div class="contact-link"><span class="contact-link-label">Phone</span><a href="tel:8622722654">(862) 272-2654</a></div>
+    <div class="contact-link"><span class="contact-link-label">Location</span><a href="#">Harrison, NJ, USA</a></div>
   </div>
 </section>
 
 <footer>
-  <span>©  Harsha Andra</span>
+  <span>© Harsha Andra</span>
   <span>AI/ML Engineer · Harrison, NJ</span>
 </footer>
 
-<!-- README PREVIEW PANEL -->
 <div id="readme-overlay"></div>
 <div id="readme-panel">
   <div id="readme-header">
@@ -1330,314 +811,150 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── CURSOR ──────────────────────────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursor-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
-
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 (function animCursor() {
-  rx += (mx - rx) * 0.15;
-  ry += (my - ry) * 0.15;
-  cursor.style.left = mx + 'px';
-  cursor.style.top  = my + 'px';
-  ring.style.left   = rx + 'px';
-  ring.style.top    = ry + 'px';
+  rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
   requestAnimationFrame(animCursor);
 })();
-
-document.querySelectorAll('a, button, .project-item, .skill-tag, .repo-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = cursor.style.height = '14px';
-    cursor.style.background = '#f0ece4';
-    ring.style.width = ring.style.height = '56px';
-    ring.style.borderColor = 'rgba(200,169,110,0.6)';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = cursor.style.height = '8px';
-    cursor.style.background = '#c8a96e';
-    ring.style.width = ring.style.height = '36px';
-    ring.style.borderColor = 'rgba(200,169,110,0.4)';
-  });
+document.querySelectorAll('a, button, .skill-tag, .repo-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width = cursor.style.height = '14px'; cursor.style.background = '#f0ece4'; ring.style.width = ring.style.height = '56px'; ring.style.borderColor = 'rgba(200,169,110,0.6)'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width = cursor.style.height = '8px'; cursor.style.background = '#c8a96e'; ring.style.width = ring.style.height = '36px'; ring.style.borderColor = 'rgba(200,169,110,0.4)'; });
 });
 
 // ── CLOCK ───────────────────────────────────────────────────────────────────
 function updateClock() {
-  const now = new Date();
-  const t = now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', second:'2-digit', timeZone:'America/New_York' });
+  const t = new Date().toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit', second:'2-digit', timeZone:'America/New_York' });
   document.getElementById('clock').textContent = 'Harrison, NJ — ' + t;
 }
-updateClock();
-setInterval(updateClock, 1000);
+updateClock(); setInterval(updateClock, 1000);
 
-// ── HERO CANVAS — data particle network ─────────────────────────────────────
+// ── HERO CANVAS ─────────────────────────────────────────────────────────────
 const canvas = document.getElementById('hero-canvas');
-const ctx    = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
 let W, H, particles = [];
-
-function resize() {
-  W = canvas.width  = canvas.offsetWidth;
-  H = canvas.height = canvas.offsetHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
+function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+resize(); window.addEventListener('resize', resize);
 class Particle {
   constructor() { this.reset(); }
-  reset() {
-    this.x  = Math.random() * W;
-    this.y  = Math.random() * H;
-    this.vx = (Math.random() - 0.5) * 0.4;
-    this.vy = (Math.random() - 0.5) * 0.4;
-    this.r  = Math.random() * 1.5 + 0.5;
-    this.a  = Math.random() * 0.5 + 0.2;
-  }
-  update() {
-    this.x += this.vx; this.y += this.vy;
-    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
-    ctx.fillStyle = `rgba(200,169,110,${this.a})`;
-    ctx.fill();
-  }
+  reset() { this.x = Math.random()*W; this.y = Math.random()*H; this.vx = (Math.random()-0.5)*0.4; this.vy = (Math.random()-0.5)*0.4; this.r = Math.random()*1.5+0.5; this.a = Math.random()*0.5+0.2; }
+  update() { this.x += this.vx; this.y += this.vy; if (this.x<0||this.x>W||this.y<0||this.y>H) this.reset(); }
+  draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle=`rgba(200,169,110,${this.a})`; ctx.fill(); }
 }
-
-for (let i = 0; i < 120; i++) particles.push(new Particle());
-
+for (let i=0;i<120;i++) particles.push(new Particle());
 function drawConnections() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i+1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const d  = Math.sqrt(dx*dx + dy*dy);
-      if (d < 100) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(200,169,110,${0.08 * (1 - d/100)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
+  for (let i=0;i<particles.length;i++) for (let j=i+1;j<particles.length;j++) {
+    const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, d=Math.sqrt(dx*dx+dy*dy);
+    if (d<100) { ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(200,169,110,${0.08*(1-d/100)})`; ctx.lineWidth=0.5; ctx.stroke(); }
   }
 }
-
-(function animCanvas() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => { p.update(); p.draw(); });
-  drawConnections();
-  requestAnimationFrame(animCanvas);
-})();
+(function animCanvas() { ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); drawConnections(); requestAnimationFrame(animCanvas); })();
 
 // ── SCROLL REVEAL ────────────────────────────────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal');
-const observer  = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); }
-  });
-}, { threshold: 0.1 });
-revealEls.forEach(el => observer.observe(el));
+const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── GITHUB REPOS + README PREVIEW ────────────────────────────────────────────
+// ── GITHUB REPOS ─────────────────────────────────────────────────────────────
 const GITHUB_USER = 'harsha-andra';
 
-// ── README PANEL elements (HTML is in DOM above this script) ──────────────────
-const panel      = document.getElementById('readme-panel');
-const overlay    = document.getElementById('readme-overlay');
-const closeBtn   = document.getElementById('readme-close');
-const repoTitle  = document.getElementById('readme-repo-name');
-const repoMeta   = document.getElementById('readme-repo-meta');
-const readmeLoad = document.getElementById('readme-loading');
-const readmeCont = document.getElementById('readme-content');
-const ghLink     = document.getElementById('readme-github-link');
-let readmeCache  = {};
+const panel     = document.getElementById('readme-panel');
+const overlay   = document.getElementById('readme-overlay');
+const closeBtn  = document.getElementById('readme-close');
+const repoTitle = document.getElementById('readme-repo-name');
+const repoMeta  = document.getElementById('readme-repo-meta');
+const readmeLoad= document.getElementById('readme-loading');
+const readmeCont= document.getElementById('readme-content');
+const ghLink    = document.getElementById('readme-github-link');
+let readmeCache = {};
 
 function openPanel(repoName, repoUrl, lang) {
-  repoTitle.textContent = repoName.replace(/[-_]/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-  repoMeta.textContent  = lang ? `${lang} · README.md` : 'README.md';
-  ghLink.href           = repoUrl;
-  panel.classList.add('open');
-  overlay.classList.add('open');
+  repoTitle.textContent = repoName.replace(/[-_]/g,' ').replace(/\b\w/g, c=>c.toUpperCase());
+  repoMeta.textContent = lang ? `${lang} · README.md` : 'README.md';
+  ghLink.href = repoUrl;
+  panel.classList.add('open'); overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
   fetchReadme(repoName, repoUrl);
 }
-
-function closePanel() {
-  panel.classList.remove('open');
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
+function closePanel() { panel.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
 closeBtn.addEventListener('click', closePanel);
 overlay.addEventListener('click', closePanel);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+document.addEventListener('keydown', e => { if (e.key==='Escape') closePanel(); });
 
-// Minimal markdown → HTML (no deps)
 function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function mdToHtml(md, repoName, branch) {
   const rawBase = `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}`;
-
-  // Helper: convert any GitHub URL to raw
   function toRawUrl(s) {
     s = s.trim();
-    // raw.githubusercontent.com — just encode parens/spaces in the path portion
-    if (s.startsWith('https://raw.githubusercontent.com')) {
-      // Split off the base (first 5 path segments: host/user/repo/branch) then encode the file path
-      const m = s.match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)(\/?.*)$/);
-      if (m) return m[1] + m[2].replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/ /g,'%20');
-      return s;
-    }
-    // github.com blob page → convert to raw, then encode parens
-    if (/^https?:\/\/github\.com\/[^/]+\/[^/]+\/blob\//.test(s)) {
-      s = s.replace(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/,
-        'https://raw.githubusercontent.com/$1/$2/$3/$4');
-      return s.replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/ /g,'%20');
-    }
-    // Any other absolute URL (shields.io badges, etc) — pass through untouched
+    if (s.startsWith('https://raw.githubusercontent.com')) { const m=s.match(/^(https:\/\/raw\.githubusercontent\.com\/[^/]+\/[^/]+\/[^/]+)(\/?.*)$/); if(m) return m[1]+m[2].replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/ /g,'%20'); return s; }
+    if (/^https?:\/\/github\.com\/[^/]+\/[^/]+\/blob\//.test(s)) { s=s.replace(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/,'https://raw.githubusercontent.com/$1/$2/$3/$4'); return s.replace(/\(/g,'%28').replace(/\)/g,'%29').replace(/ /g,'%20'); }
     if (/^https?:\/\//.test(s)) return s;
-    // Relative path — decode, prefix with rawBase, encode spaces/parens
-    try { s = decodeURIComponent(s); } catch(e) {}
-    s = rawBase + '/' + s.replace(/^\.?\//, '');
+    try { s=decodeURIComponent(s); } catch(e) {}
+    s = rawBase+'/'+s.replace(/^\.?\//,'');
     return s.replace(/ /g,'%20').replace(/\(/g,'%28').replace(/\)/g,'%29');
   }
-
-  // Pre-pass: handle raw HTML <img src="..."> tags in the markdown
-  md = md.replace(/<img([^>]*?)src=["']([^"']+)["']([^>]*)>/gi, (_, pre, src, post) => {
-    const s = toRawUrl(src);
-    return `<img${pre}src="${s}"${post} crossorigin="anonymous" style="max-width:100%;border-radius:4px;margin:10px 0;display:block;">`;
-  });
-
+  md = md.replace(/<img([^>]*?)src=["']([^"']+)["']([^>]*)>/gi, (_,pre,src,post) => `<img${pre}src="${toRawUrl(src)}"${post} crossorigin="anonymous" style="max-width:100%;border-radius:4px;margin:10px 0;display:block;">`);
   return md
-    .replace(/```[\w]*\n?([\s\S]*?)```/g, (_,c) => `<pre><code>${escHtml(c.trim())}</code></pre>`)
-    .replace(/`([^`]+)`/g, (_,c) => `<code>${escHtml(c)}</code>`)
-    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm,  '<h1>$1</h1>')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g,   '<em>$1</em>')
-    // Fix images — resolve all paths including GitHub blob URLs
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
-      const s = toRawUrl(src);
-      return `<img src="${s}" alt="${escHtml(alt)}" crossorigin="anonymous" style="max-width:100%;border-radius:2px;margin:12px 0;display:block;">`;
-    })
+    .replace(/```[\w]*\n?([\s\S]*?)```/g, (_,c)=>`<pre><code>${escHtml(c.trim())}</code></pre>`)
+    .replace(/`([^`]+)`/g, (_,c)=>`<code>${escHtml(c)}</code>`)
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_,alt,src)=>`<img src="${toRawUrl(src)}" alt="${escHtml(alt)}" crossorigin="anonymous" style="max-width:100%;border-radius:2px;margin:12px 0;display:block;">`)
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
-    .replace(/^---+$/gm,'<hr>')
-    .replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>')
-    .replace(/^\s*[-*] (.+)$/gm,'<li>$1</li>')
-    .replace(/(<li>.*<\/li>\n?)+/g, s => `<ul>${s}</ul>`)
+    .replace(/^---+$/gm,'<hr>').replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>')
+    .replace(/^\s*[-*] (.+)$/gm,'<li>$1</li>').replace(/(<li>.*<\/li>\n?)+/g,s=>`<ul>${s}</ul>`)
     .replace(/^\d+\. (.+)$/gm,'<li>$1</li>')
-    .split(/\n{2,}/)
-    .map(b => {
-      const t = b.trim();
-      if (!t) return "";
-      if (/^<(h[1-6]|pre|ul|ol|hr|blockquote|img|table)/.test(t)) return t;
-      if (t.includes("<img ")) return `<div style="margin:12px 0;">${t}</div>`;
-      return `<p>${t.replace(/\n/g," ")}</p>`;
-    }).join("\n");
+    .split(/\n{2,}/).map(b=>{ const t=b.trim(); if(!t) return ""; if(/^<(h[1-6]|pre|ul|ol|hr|blockquote|img|table)/.test(t)) return t; if(t.includes("<img ")) return `<div style="margin:12px 0;">${t}</div>`; return `<p>${t.replace(/\n/g," ")}</p>`; }).join("\n");
 }
 
 async function fetchReadme(repoName, repoUrl) {
-  readmeLoad.style.display = 'flex';
-  readmeCont.style.display = 'none';
-  readmeCont.innerHTML = '';
-
-  if (readmeCache[repoName]) {
-    readmeLoad.style.display = 'none';
-    readmeCont.style.display = 'block';
-    readmeCont.innerHTML = readmeCache[repoName];
-    return;
-  }
-
-  const branches = ['main', 'master'];
+  readmeLoad.style.display = 'flex'; readmeCont.style.display = 'none'; readmeCont.innerHTML = '';
+  if (readmeCache[repoName]) { readmeLoad.style.display='none'; readmeCont.style.display='block'; readmeCont.innerHTML=readmeCache[repoName]; return; }
+  const branches = ['main','master'];
   let text = null, usedBranch = 'main';
-
-  // Primary: raw.githubusercontent.com (works on Vercel)
   for (const branch of branches) {
-    try {
-      const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}/README.md`;
-      const res = await fetch(url);
-      if (res.ok) { text = await res.text(); usedBranch = branch; break; }
-    } catch(e) {}
+    try { const res=await fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}/README.md`); if(res.ok){text=await res.text();usedBranch=branch;break;} } catch(e) {}
   }
-
-  // Fallback 1: GitHub API with raw accept header
-  if (!text) {
-    try {
-      const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${repoName}/readme`, {
-        headers: { 'Accept': 'application/vnd.github.v3.raw' }
-      });
-      if (res.ok) { text = await res.text(); }
-    } catch(e) {}
-  }
-
-  // Fallback 2: CORS proxy
-  if (!text) {
-    for (const branch of branches) {
-      try {
-        const raw = `https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}/README.md`;
-        const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(raw)}`);
-        if (res.ok) { text = await res.text(); usedBranch = branch; break; }
-      } catch(e) {}
-    }
-  }
-
-  readmeLoad.style.display = 'none';
-  readmeCont.style.display = 'block';
-
-  if (text && text.trim().length > 10) {
-    const html = mdToHtml(text, repoName, usedBranch);
-    readmeCont.innerHTML = html;
-    readmeCache[repoName] = html;
-  } else {
-    readmeCont.innerHTML = `
-      <p style="color:rgba(240,236,228,0.35);font-size:12px;line-height:1.8;">
-        No README found for this repo yet.<br>
-        <a href="${repoUrl}" target="_blank" rel="noopener" style="color:var(--accent)">View on GitHub ↗</a>
-      </p>`;
-  }
+  if (!text) { try { const res=await fetch(`https://api.github.com/repos/${GITHUB_USER}/${repoName}/readme`,{headers:{'Accept':'application/vnd.github.v3.raw'}}); if(res.ok) text=await res.text(); } catch(e) {} }
+  if (!text) { for (const branch of branches) { try { const res=await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://raw.githubusercontent.com/${GITHUB_USER}/${repoName}/${branch}/README.md`)}`); if(res.ok){text=await res.text();usedBranch=branch;break;} } catch(e) {} } }
+  readmeLoad.style.display='none'; readmeCont.style.display='block';
+  if (text && text.trim().length>10) { const html=mdToHtml(text,repoName,usedBranch); readmeCont.innerHTML=html; readmeCache[repoName]=html; }
+  else { readmeCont.innerHTML=`<p style="color:rgba(240,236,228,0.35);font-size:12px;line-height:1.8;">No README found.<br><a href="${repoUrl}" target="_blank" style="color:var(--accent)">View on GitHub ↗</a></p>`; }
 }
 
-// ── REPO CARDS ────────────────────────────────────────────────────────────────
 function bindCursorToCards() {
   document.querySelectorAll('.repo-card').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.style.width = cursor.style.height = '14px'; cursor.style.background = '#f0ece4'; });
-    el.addEventListener('mouseleave', () => { cursor.style.width = cursor.style.height = '8px';  cursor.style.background = '#c8a96e'; });
+    el.addEventListener('mouseenter', ()=>{cursor.style.width=cursor.style.height='14px';cursor.style.background='#f0ece4';});
+    el.addEventListener('mouseleave', ()=>{cursor.style.width=cursor.style.height='8px';cursor.style.background='#c8a96e';});
   });
 }
 
 function renderRepoCards(repos, container) {
   repos.forEach(repo => {
-    const card    = document.createElement('div');
+    const card = document.createElement('div');
     card.className = 'repo-card';
-    card.style.cursor = 'none';
-    const name    = repo.name.replace(/[-_]/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-    const updated = new Date(repo.updated_at).toLocaleDateString('en-US', { month:'short', year:'numeric' });
-    const stars   = repo.stargazers_count || 0;
+    const name = repo.name.replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    const updated = new Date(repo.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'});
+    const stars = repo.stargazers_count || 0;
     card.innerHTML = `
       <span style="font-size:9px;letter-spacing:0.15em;color:var(--accent2);border:1px solid rgba(122,158,142,0.35);padding:2px 8px;display:inline-block;margin-bottom:10px;">RECENT</span>
       <div class="repo-name">${name}</div>
       <div class="repo-desc">${repo.description || 'ML / Data Science project.'}</div>
       <div class="repo-meta">
         <span class="repo-lang">${repo.language || 'Python'}</span>
-        <span class="repo-stars">${stars > 0 ? '★ '+stars : ''}</span>
+        <span class="repo-stars">${stars>0?'★ '+stars:''}</span>
         <span class="repo-updated">${updated}</span>
       </div>
-      <div style="margin-top:14px;font-size:10px;letter-spacing:0.12em;color:rgba(200,169,110,0.45);text-transform:uppercase;">Hover to preview README →</div>`;
-
+      <div style="margin-top:14px;font-size:10px;letter-spacing:0.12em;color:rgba(200,169,110,0.45);text-transform:uppercase;">Click to preview README →</div>`;
     let hoverTimer = null;
-    card.addEventListener('mouseenter', () => {
-      hoverTimer = setTimeout(() => openPanel(repo.name, repo.html_url, repo.language), 600);
-    });
-    card.addEventListener('mouseleave', () => {
-      clearTimeout(hoverTimer);
-    });
-    card.addEventListener('click', () => {
-      clearTimeout(hoverTimer);
-      openPanel(repo.name, repo.html_url, repo.language);
-    });
+    card.addEventListener('mouseenter', ()=>{ hoverTimer=setTimeout(()=>openPanel(repo.name,repo.html_url,repo.language),600); });
+    card.addEventListener('mouseleave', ()=>clearTimeout(hoverTimer));
+    card.addEventListener('click', ()=>{ clearTimeout(hoverTimer); openPanel(repo.name,repo.html_url,repo.language); });
     container.appendChild(card);
   });
   bindCursorToCards();
@@ -1647,48 +964,53 @@ async function loadRepos() {
   const container = document.getElementById('repos-container');
   container.innerHTML = '<div class="repos-loading">Loading repositories…</div>';
 
-  // Strategy 1: Direct GitHub API
+  // Try 1: Direct GitHub API
   try {
-    const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=9&type=public`,
-      { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-    );
+    const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=9&type=public`, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
     if (res.ok) {
       const repos = await res.json();
-      if (Array.isArray(repos) && repos.length) {
-        container.innerHTML = '';
-        renderRepoCards(repos, container);
-        return;
-      }
+      if (Array.isArray(repos) && repos.length) { container.innerHTML=''; renderRepoCards(repos,container); return; }
     }
   } catch(e) {}
 
-  // Strategy 2: CORS proxy
+  // Try 2: allorigins proxy
   try {
-    const url = `https://api.allorigins.win/raw?url=${encodeURIComponent('https://api.github.com/users/'+GITHUB_USER+'/repos?sort=updated&per_page=9')}`;
-    const res = await fetch(url);
+    const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=9`)}`);
     if (res.ok) {
       const repos = await res.json();
-      if (Array.isArray(repos) && repos.length) {
-        container.innerHTML = '';
-        renderRepoCards(repos, container);
-        return;
-      }
+      if (Array.isArray(repos) && repos.length) { container.innerHTML=''; renderRepoCards(repos,container); return; }
     }
   } catch(e) {}
 
-  // Strategy 3: plain message — don't show fake repos
-  container.innerHTML = `
-    <div style="grid-column:1/-1;padding:48px 28px;text-align:center;">
-      <p style="font-size:12px;color:rgba(240,236,228,0.3);line-height:1.9;margin-bottom:16px;">
-        Live repos can't load in a local file due to browser security.<br>
-        Deploy to <strong style="color:var(--accent)">Vercel</strong> or <strong style="color:var(--accent)">Netlify</strong> and they'll appear automatically.
-      </p>
-      <a href="https://github.com/${GITHUB_USER}" target="_blank" rel="noopener"
-         style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid rgba(200,169,110,0.3);padding-bottom:2px;text-decoration:none;">
-        View all repos on GitHub ↗
-      </a>
-    </div>`;
+  // Try 3: corsproxy.io
+  try {
+    const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=9`)}`);
+    if (res.ok) {
+      const repos = await res.json();
+      if (Array.isArray(repos) && repos.length) { container.innerHTML=''; renderRepoCards(repos,container); return; }
+    }
+  } catch(e) {}
+
+  // Try 4: jsonp.afeld.me proxy
+  try {
+    const res = await fetch(`https://jsonp.afeld.me/?url=${encodeURIComponent(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=9`)}`);
+    if (res.ok) {
+      const repos = await res.json();
+      if (Array.isArray(repos) && repos.length) { container.innerHTML=''; renderRepoCards(repos,container); return; }
+    }
+  } catch(e) {}
+
+  // Final fallback: hardcoded repos
+  const fallback = [
+    { name: 'Healthcare-RAG-Chatbot', description: 'LangChain RAG pipeline with OpenAI & Pinecone for intelligent clinical Q&A on healthcare documents.', language: 'Python', html_url: 'https://github.com/harsha-andra', stargazers_count: 0, updated_at: new Date().toISOString() },
+    { name: 'FMCG-Sales-Forecasting', description: 'XGBoost/GBM ensemble forecasting dashboard with KMeans clustering and Kafka/Airflow pipelines.', language: 'Python', html_url: 'https://github.com/harsha-andra', stargazers_count: 0, updated_at: new Date().toISOString() },
+    { name: 'IoT-Anomaly-Detection', description: 'Real-time IoT sensor anomaly detection system using PyTorch LSTM and SciPy signal processing.', language: 'Python', html_url: 'https://github.com/harsha-andra', stargazers_count: 0, updated_at: new Date().toISOString() },
+    { name: 'RAG-Research-Assistant', description: 'Real-time research assistant using Ollama, LangChain LCEL, DuckDuckGo, and Wikipedia with dark terminal UI.', language: 'Python', html_url: 'https://github.com/harsha-andra', stargazers_count: 0, updated_at: new Date().toISOString() },
+    { name: 'Multi-Agent-Calling-System', description: 'Universal AI-powered automated operations and calling system using LangGraph, Twilio, ElevenLabs, and FastAPI.', language: 'Python', html_url: 'https://github.com/harsha-andra', stargazers_count: 0, updated_at: new Date().toISOString() },
+    { name: 'Stock-Price-Prediction', description: 'LSTM-based stock price prediction with yfinance data pipeline and interactive Plotly dashboard.', language: 'Python', html_url: 'https://github.com/harsha-andra', stargazers_count: 0, updated_at: new Date().toISOString() },
+  ];
+  container.innerHTML = '';
+  renderRepoCards(fallback, container);
 }
 
 loadRepos();
@@ -1697,26 +1019,17 @@ setInterval(loadRepos, 5 * 60 * 1000);
 // ── STAT COUNTERS ─────────────────────────────────────────────────────────────
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
-  const duration = 1200;
   const start = performance.now();
   function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(ease * target) + (progress < 1 ? '' : '+');
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target + '+';
+    const progress = Math.min((now-start)/1200, 1);
+    const ease = 1-Math.pow(1-progress,3);
+    el.textContent = Math.floor(ease*target)+(progress<1?'':'+');
+    if (progress<1) requestAnimationFrame(step); else el.textContent=target+'+';
   }
   requestAnimationFrame(step);
 }
-
-// Fire counters when about section scrolls into view
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.about-stat-num').forEach(animateCounter);
-      statObserver.unobserve(entry.target);
-    }
-  });
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.querySelectorAll('.about-stat-num').forEach(animateCounter);statObserver.unobserve(e.target);} });
 }, { threshold: 0.3 });
 const aboutSection = document.getElementById('about');
 if (aboutSection) statObserver.observe(aboutSection);
